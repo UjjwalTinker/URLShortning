@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ujjwal tinker</h1>
+
+    <%  if (locals.id) { %> 
+        <p>URL Generated : https://localhost/url/alluser/<%=id %></p>
+    <% } %>
+    <div>
+        <form  method="POST" action="/url">
+            <label>Enter Your Original URL</label>
+            <br> <br>
+            <input type="text" name="url" placeholder="URL - www.Example.com">
+            <button type="submit">Generate</button>
+        </form>
+    </div>
+   
+        <div>
+            <% if (locals.urls) { %>
+                <table>
+                    <thead>
+                        <th>S.no</th>
+                        <th>Shortid</th>
+                        <th>Redirect</th>
+                        <th>Clicks</th>
+                        <tbody>
+                            <% urls.forEach((url,index) => { %>
+                                <tr>
+                             <td><%= index+1 %></td>
+                             <td><%= url.ShortID %></td>
+                             <td><%= url.RedirectURL %></td>
+                             <td><%= url.visitHIstory.length %></td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                    </thead>
+                </table>
+                <% } %>
+            </div>
+</body>
+</html>
